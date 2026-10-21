@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omker Stores | Cinematic Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #080706;
+            color: #F3F0EA;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .syne-font {
+            font-family: 'Syne', sans-serif;
+        }
+
+        /* Cinematic Glass & Neon Glow */
+        .cinematic-glass {
+            background: rgba(18, 15, 13, 0.75);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .product-card-3d {
+            background: linear-gradient(135deg, rgba(25, 20, 16, 0.9), rgba(10, 8, 7, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .product-card-3d:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Floating 3D Motion */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1.5deg); }
+        }
+        .animate-3d-float {
+            animation: floatSlow 7s ease-in-out infinite;
+        }
+
+        /* Luxury Gradient Button */
+        .btn-cinematic {
+            background: linear-gradient(135deg, #F3F0EA 0%, #D4AF37 100%);
+            color: #080706;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-cinematic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .page-section { display: none; opacity: 0; transition: opacity 0.5s ease; }
+        .page-section.active { display: block; opacity: 1; }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- Navbar -->
+    <header class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-7xl cinematic-glass rounded-full px-8 py-4 flex justify-between items-center shadow-2xl">
+        <a href="#" onclick="switchPage('home')" class="flex items-center space-x-3 group">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-200 flex items-center justify-center text-black font-extrabold text-sm shadow-lg">
+                O
+            </div>
+            <span class="syne-font font-extrabold tracking-widest text-white text-sm">OMKER STORES</span>
+        </a>
+        <nav class="hidden md:flex space-x-8 text-xs font-semibold tracking-wider text-gray-400">
+            <button onclick="switchPage('home')" class="hover:text-amber-400 transition">EXPERIENCE</button>
+            <button onclick="switchPage('shop')" class="hover:text-amber-400 transition">3D COLLECTION</button>
+            <button onclick="switchPage('legacy')" class="hover:text-amber-400 transition">HERITAGE</button>
+            <button onclick="switchPage('contact')" class="hover:text-amber-400 transition">LOCATION</button>
+        </nav>
+        <button onclick="switchPage('cart')" class="bg-white/5 border border-amber-500/30 text-amber-300 px-5 py-2 rounded-full font-bold text-xs flex items-center hover:bg-amber-500/10 transition">
+            <i class="fas fa-bag-shopping mr-2"></i> Bag <span id="cartCount" class="ml-2 bg-amber-400 text-black px-1.5 py-0.5 rounded-full text-[10px]">0</span>
+        </button>
+    </header>
+
+    <!-- ================= 1. HOME EXPERIENCE PAGE ================= -->
+    <div id="page-home" class="page-section active pt-32 pb-20 max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[75vh]">
+            <div class="space-y-6">
+                <span class="text-xs syne-font tracking-[0.3em] uppercase text-amber-400 font-bold">Sigra • Varanasi • Since 75 Years</span>
+                <h1 class="syne-font text-5xl sm:text-7xl font-extrabold tracking-tight leading-[1.05] text-white">
+                    THE FUTURE OF <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-600">GROCERY.</span>
+                </h1>
+                <p class="text-gray-400 text-sm sm:text-base font-light max-w-lg leading-relaxed">
+                    Step into an elite digital showroom. Explore handpicked royal dry fruits, pure spices, and daily essentials with cinematic ease.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <button onclick="switchPage('shop')" class="btn-cinematic px-8 py-4 rounded-full text-xs uppercase tracking-widest flex items-center justify-center">
+                        Explore Collection <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <button onclick="switchPage('contact')" class="cinematic-glass px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest text-white hover:border-amber-400 transition flex items-center justify-center">
+                        Visit Showroom
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cinematic 3D Visual Box -->
+            <div class="relative flex justify-center items-center">
+                <div class="absolute w-[350px] h-[350px] bg-amber-500/10 rounded-full blur-[90px] -z-10"></div>
+                <div class="w-full max-w-md h-[450px] cinematic-glass rounded-[35px] p-6 relative overflow-hidden flex flex-col justify-between animate-3d-float shadow-2xl border-amber-500/20">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] syne-font tracking-widest text-amber-400 uppercase">Immersive 3D Showcase</span>
+                        <i class="fas fa-cube text-amber-400"></i>
+                    </div>
+                    <div class="my-auto text-center">
+                        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80" alt="Dry Fruits" class="w-64 h-64 mx-auto object-cover rounded-3xl shadow-2xl border border-amber-500/30 transform hover:scale-105 transition duration-700">
+                    </div>
+                    <div>
+                        <h4 class="syne-font font-bold text-white text-lg">Royal Spices & Dry Fruits</h4>
+                        <p class="text-xs text-gray-400">Purity handcrafted for generations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- High-End Bento Features -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
+            <div class="cinematic-glass p-8 rounded-[28px]">
+                <i class="fas fa-bolt text-amber-400 text-2xl mb-4"></i>
+                <h3 class="syne-font font-bold text-white text-base">Instant Dispatch</h3>
+                <p class="text-xs text-gray-400 mt-2">Lightning fast doorstep delivery across Sigra.</p>
+            </div>
+            <div class="cinematic-glass p-8 rounded-[28px]">
+                <i class="fas fa-gem text-amber-400 text-2xl mb-4"></i>
+                <h3 class="syne-font font-bold text-white text-base">Absolute Purity</h3>
+                <p class="text-xs text-gray-400 mt-2">Uncompromised quality standards since decades.</p>
+            </div>
+            <div class="cinematic-glass p-8 rounded-[28px]">
+                <i class="fas fa-shield-halved text-amber-400 text-2xl mb-4"></i>
+                <h3 class="syne-font font-bold text-white text-base">Trusted Legacy</h3>
+                <p class="text-xs text-gray-400 mt-2">Backed by 75 years of Varanasi's heritage.</p>
+            </div>
+            <div class="cinematic-glass p-8 rounded-[28px]">
+                <i class="fas fa-comments text-amber-400 text-2xl mb-4"></i>
+                <h3 class="syne-font font-bold text-white text-base">Direct WhatsApp Order</h3>
+                <p class="text-xs text-gray-400 mt-2">Seamless cart checkout straight to owner's phone.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= 2. 3D COLLECTION / SHOP PAGE ================= -->
+    <div id="page-shop" class="page-section pt-32 pb-20 max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-xs syne-font tracking-[0.3em] uppercase text-amber-400 font-bold">Curated Catalog</span>
+            <h2 class="syne-font text-4xl sm:text-5xl font-extrabold text-white mt-3">Interactive 3D Store</h2>
+            <p class="text-gray-400 text-sm mt-3">Add luxury grocery essentials to your bag and order instantly.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="shopProductsContainer"></div>
+    </div>
+
+    <!-- ================= 3. CART & CHECKOUT PAGE ================= -->
+    <div id="page-cart" class="page-section pt-32 pb-20 max-w-4xl mx-auto px-6">
+        <h2 class="syne-font text-3xl font-extrabold text-white mb-8 flex items-center">
+            <i class="fas fa-bag-shopping mr-3 text-amber-400"></i> Your Shopping Bag
+        </h2>
+        <div id="cartContent" class="space-y-6"></div>
+    </div>
+
+    <!-- ================= 4. HERITAGE PAGE ================= -->
+    <div id="page-legacy" class="page-section pt-32 pb-20 max-w-4xl mx-auto px-6">
+        <div class="cinematic-glass p-10 sm:p-14 rounded-[35px] relative overflow-hidden">
+            <span class="text-xs syne-font tracking-[0.3em] uppercase text-amber-400 font-bold">Legacy</span>
+            <h2 class="syne-font text-4xl font-extrabold text-white mt-3 mb-6">75 Years of Unrivaled Excellence</h2>
+            <p class="text-gray-300 leading-relaxed text-base mb-6 font-light">
+                "Your definite stop for all your grocery needs. Serving best quality and varieties of dry-fruits, spices, and daily staples. A unit of <strong>Shree Narayan Prasad Vishnu Prasad, Chowk Varanasi</strong> — Serving you since 75 years."
+            </p>
+        </div>
+    </div>
+
+    <!-- ================= 5. LOCATION PAGE ================= -->
+    <div id="page-contact" class="page-section pt-32 pb-20 max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center cinematic-glass p-8 sm:p-12 rounded-[35px]">
+            <div class="space-y-6">
+                <span class="text-xs syne-font tracking-[0.3em] uppercase text-amber-400 font-bold">Showroom</span>
+                <h3 class="syne-font text-3xl font-extrabold text-white">Visit Omker Stores</h3>
+                <div class="space-y-4 text-sm text-gray-300">
+                    <div>
+                        <p class="font-bold text-amber-400">Address:</p>
+                        <p>D58/20C, Smith School Rd, opposite St. Paul Church, Sigra, Varanasi, UP 221002</p>
+                    </div>
+                    <div>
+                        <p class="font-bold text-amber-400">Timing:</p>
+                        <p>11:00 AM – 10:00 PM (All 7 Days)</p>
+                    </div>
+                    <div>
+                        <p class="font-bold text-amber-400">Delivery Hotline:</p>
+                        <p class="font-extrabold text-white text-xl">073792 82828</p>
+                    </div>
+                </div>
+                <div class="pt-2">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Omker+Stores+Sigra+Varanasi" target="_blank" class="btn-cinematic px-8 py-4 rounded-full inline-block text-xs uppercase tracking-widest">
+                        <i class="fas fa-directions mr-2"></i> Get Directions
+                    </a>
+                </div>
+            </div>
+            <div class="h-[400px] rounded-3xl overflow-hidden border border-amber-500/20 shadow-2xl">
+                <iframe class="w-full h-full" src="https://maps.google.com/maps?q=Omker%20Stores%20Sigra%20Varanasi&t=&z=16&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="cinematic-glass mx-6 my-12 px-10 py-10 rounded-[30px] flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6 text-xs text-gray-400">
+        <div>
+            <h4 class="syne-font text-sm font-extrabold text-white">OMKER STORES</h4>
+            <p class="text-amber-400 mt-1">A unit of Shree Narayan Prasad Vishnu Prasad, Chowk Varanasi</p>
+        </div>
+        <div>
+            <p class="font-bold text-white">Direct Order & Support:</p>
+            <p class="text-amber-400 text-sm font-extrabold mt-0.5">073792 82828</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/917379282828?text=Namaste%20Omker%20Stores!" target="_blank" class="fixed bottom-8 right-8 bg-gradient-to-tr from-green-600 to-emerald-400 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-3xl z-50 transition transform hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Engine Script -->
+    <script>
+        const products = [
+            { id: 1, name: "Royal Dry Fruits (Kaju/Badam)", price: 450, unit: "500g", img: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80", cat: "Dry Fruits" },
+            { id: 2, name: "India Gate Basmati Rice", price: 380, unit: "5kg", img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80", cat: "Staples" },
+            { id: 3, name: "Fortune Refined / Mustard Oil", price: 160, unit: "1L", img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80", cat: "Staples" },
+            { id: 4, name: "Maggi & Weikfield Pasta", price: 120, unit: "Pack", img: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=600&q=80", cat: "Snacks" },
+            { id: 5, name: "Real Fruit Juice & Cold Drinks", price: 110, unit: "1L", img: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80", cat: "Beverages" },
+            { id: 6, name: "Dabur Honey & Health Juices", price: 250, unit: "Bottle", img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80", cat: "Health" }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('omker_cart')) || [];
+
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById('page-' + pageId).classList.add('active');
+            window.scrollTo(0, 0);
+            if(pageId === 'cart') renderCart();
+        }
+
+        function renderProducts() {
+            let html = '';
+            products.forEach(p => {
+                html += `
+                    <div class="product-card-3d p-6 rounded-[30px] flex flex-col justify-between">
+                        <div>
+                            <div class="h-56 rounded-2xl overflow-hidden mb-5 relative bg-black/50 border border-white/5">
+                                <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover transform hover:scale-110 transition duration-700">
+                                <span class="absolute top-4 left-4 bg-amber-400 text-black font-extrabold text-[10px] px-3 py-1 rounded-full uppercase tracking-widest">${p.cat}</span>
+                            </div>
+                            <h4 class="syne-font font-bold text-white text-lg mb-1">${p.name}</h4>
+                            <p class="text-xs text-gray-400 mb-3">Unit: ${p.unit}</p>
+                            <p class="text-xl font-extrabold text-amber-400 mb-6">₹${p.price}</p>
+                        </div>
+                        <button onclick="addToCart(${p.id})" class="w-full btn-cinematic font-bold text-xs py-4 rounded-2xl uppercase tracking-widest flex items-center justify-center">
+                            <i class="fas fa-cart-plus mr-2 text-sm"></i> Add to Bag
+                        </button>
+                    </div>
+                `;
+            });
+            document.getElementById('shopProductsContainer').innerHTML = html;
+        }
+
+        function addToCart(productId) {
+            let product = products.find(p => p.id === productId);
+            let existing = cart.find(item => item.id === productId);
+            if(existing) { existing.qty += 1; } else { cart.push({ ...product, qty: 1 }); }
+            updateCartCount();
+            alert(product.name + " bag mein add ho gaya!");
+        }
+
+        function updateCartCount() {
+            let totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartCount').innerText = totalQty;
+            localStorage.setItem('omker_cart', JSON.stringify(cart));
+        }
+
+        function changeQty(productId, delta) {
+            let item = cart.find(i => i.id === productId);
+            if(item) {
+                item.qty += delta;
+                if(item.qty <= 0) { cart = cart.filter(i => i.id !== productId); }
+            }
+            updateCartCount();
+            renderCart();
+        }
+
+        function renderCart() {
+            let container = document.getElementById('cartContent');
+            if(cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-20 cinematic-glass rounded-[30px]">
+                        <i class="fas fa-bag-shopping text-6xl text-amber-500/30 mb-4"></i>
+                        <p class="text-lg font-bold text-white">Your bag is currently empty.</p>
+                        <button onclick="switchPage('shop')" class="mt-6 btn-cinematic text-xs font-bold px-8 py-4 rounded-full uppercase tracking-widest">Explore Collection</button>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '<div class="cinematic-glass p-8 sm:p-10 rounded-[30px] space-y-6">';
+            let grandTotal = 0;
+
+            cart.forEach(item => {
+                let total = item.price * item.qty;
+                grandTotal += total;
+                html += `
+                    <div class="flex flex-col sm:flex-row justify-between items-center border-b border-white/5 pb-4 gap-4">
+                        <div class="flex items-center space-x-4 w-full sm:w-auto">
+                            <img src="${item.img}" class="w-16 h-16 object-cover rounded-2xl border border-amber-500/20">
+                            <div>
+                                <h4 class="syne-font font-bold text-white text-base">${item.name}</h4>
+                                <p class="text-xs text-gray-400">₹${item.price} × ${item.qty} ${item.unit}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-6 justify-between w-full sm:w-auto">
+                            <div class="flex items-center border border-white/10 rounded-xl overflow-hidden bg-black/60">
+                                <button onclick="changeQty(${item.id}, -1)" class="px-3 py-1.5 font-bold text-amber-400">-</button>
+                                <span class="px-3 py-1.5 font-bold text-sm text-white">${item.qty}</span>
+                                <button onclick="changeQty(${item.id}, 1)" class="px-3 py-1.5 font-bold text-amber-400">+</button>
+                            </div>
+                            <span class="font-extrabold text-amber-400 text-lg">₹${total}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                <div class="pt-4 flex justify-between items-center text-lg font-extrabold text-white">
+                    <span>Total Amount:</span>
+                    <span class="text-3xl syne-font text-amber-400">₹${grandTotal}</span>
+                </div>
+                <div class="mt-8 space-y-4 pt-6 border-t border-white/5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="text" id="cartName" placeholder="Your Full Name" class="bg-black/60 border border-white/10 rounded-2xl px-5 py-4 text-sm text-white focus:outline-none focus:border-amber-400">
+                        <input type="text" id="cartAddress" placeholder="Delivery Address / Area (e.g. Sigra)" class="bg-black/60 border border-white/10 rounded-2xl px-5 py-4 text-sm text-white focus:outline-none focus:border-amber-400">
+                    </div>
+                    <button onclick="checkoutWhatsApp(${grandTotal})" class="w-full btn-cinematic font-bold text-sm py-5 rounded-2xl shadow-2xl flex items-center justify-center uppercase tracking-widest">
+                        <i class="fab fa-whatsapp text-2xl mr-3"></i> Place Order via WhatsApp (₹${grandTotal})
+                    </button>
+                </div>
+              </div>
+            `;
+            container.innerHTML = html;
+        }
+
+        function checkoutWhatsApp(grandTotal) {
+            let name = document.getElementById('cartName').value.trim();
+            let address = document.getElementById('cartAddress').value.trim();
+
+            let message = "*New Cinematic Order - Omker Stores*%0A%0A";
+            if(name) message += "*Customer:* " + encodeURIComponent(name) + "%0A";
+            if(address) message += "*Address:* " + encodeURIComponent(address) + "%0A";
+            message += "%--- Order Bag ---%0A";
+
+            cart.forEach((item, index) => {
+                message += `${index+1}. ${item.name} (${item.qty} ${item.unit}) - ₹${item.price * item.qty}%0A`;
+            });
+
+            message += `%0A*Total Bill:* ₹${grandTotal}%0A*Payment:* Cash on Delivery / UPI`;
+
+            let url = "https://wa.me/917379282828?text=" + message;
+            window.open(url, '_blank');
+        }
+
+        updateCartCount();
+        renderProducts();
+    </script>
+</body>
+</html>
